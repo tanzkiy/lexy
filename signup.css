@@ -1,0 +1,51 @@
+body {
+    background-color: grey;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 1%;
+}
+
+.logo img {
+    max-width: 13%;
+    height: auto;
+}
+
+.center {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+#sign-up, #back {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#sign-up:hover, #back:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+#sign-up:active, #back:active {
+    transform: scale(0.95);
+}

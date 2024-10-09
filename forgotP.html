@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="forgot.css">
+    <title>Forgot Password</title>
+</head>
+<body>
+
+    <div class="logo">
+        <img src="ContractFinder.png" alt="Logo" class="logo">
+    </div>
+
+    <form action="Websys log in.html" method="post" onsubmit="return showAlert()">
+        <div class="center">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" required placeholder="Enter the email you have registered before"><br>
+            <button type="button" onclick="window.location.href='Websys log in.html'" id="back">Back</button>
+            <input type="submit" value="Submit" id="submit">
+        </div>
+    </form>
+
+    <script>
+        function showAlert() {
+            alert('Form submitted successfully!');
+            return true;
+        }
+    </script>
+
+</body>
+</html>

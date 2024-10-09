@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contractor Profile - Contract Finder</title>
+</head>
+<body>
+    
+    <header class="navbar">
+        <div class="container">
+            <div class="logo-container">
+                <img src="ContractFinder.png" alt="Contract Finder Logo" class="logo-img">
+                <h1 class="logo-text">Contract Finder</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="Homepage.html">Home</a></li>
+                    <li><a href="browse.html">Browse Designs</a></li>
+                    <li><a href="find_contractors.html" class="active">Find Contractors</a></li>
+                    <li><a href="post.html">Post a Project</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li>
+                        <button id="menuButton">Menu</button>
+                        <div id="menu">
+                            <ul>
+                                <li><a href="Homepage.html">Home</a></li>
+                                <li style="text-align: center;" id="darkModeToggle">Dark Mode ON</li>
+                                <li><button id="openGalleryButton">Image Gallery</button></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    
+    <section id="contractor-profile" class="profile">
+        <div class="container">
+            <div class="profile-header">
+                <img src="Profile.png" alt="Contractor Profile" class="profile-img">
+                <div class="profile-info">
+                    <h2>Lexbere S. Curugan</h2>
+                    <p>Location: Baguio City</p>
+                    <p>Rating: ★★★★☆</p>
+                    <p>Specialization: Interior Design, Renovations, etc.</p>
+                </div>
+            </div>
+
+            <div class="profile-about">
+                <h3>About the Contractor</h3>
+                <p>I prioritize understanding and meeting clients' needs and preferences, working closely with them to ensure their vision is realized and they are fully satisfied with the end result.</p>
+            </div>
+
+            <div class="profile-projects">
+                <h3>Recent Projects</h3>
+                <div class="project-cards">
+                    <div class="project-card">
+                        <img src="project1.JPG" alt="Project 1" class="project-img">
+                        <p>Project Title 1</p>
+                    </div>
+                    <div class="project-card">
+                        <img src="project2.jpg" alt="Project 2" class="project-img">
+                        <p>Project Title 2</p>
+                    </div>
+                    <div class="project-card">
+                        <img src="project3.jpg" alt="Project 3" class="project-img">
+                        <p>Project Title 3</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-reviews">
+                <h3>Client Reviews</h3>
+                <div class="review-card">
+                    <p><strong>Client Name</strong> ★★★★☆</p>
+                    <p>Review content goes here. Feedback from clients about their experience.</p>
+                </div>
+                <div class="review-card">
+                    <p><strong>Client Name</strong> ★★★★★</p>
+                    <p>Review content goes here. Feedback from clients about their experience.</p>
+                </div>
+            </div>
+
+            <div class="profile-comments">
+                <h3>Leave a Comment</h3>
+                <form id="comment-form" class="comment-form">
+                    <textarea id="comment-text" rows="4" placeholder="Write your comment here..."></textarea>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+                <h3>Comments</h3>
+                <div id="comments-list" class="comments-list">
+                    
+                </div>
+            </div>
+
+            <div class="profile-contact">
+                <h3>Contact Information</h3>
+                <p>Email: contractor@example.com</p>
+                <p>Phone: (123) 456-7890</p>
+            </div>
+        </div>
+    </section>
+
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Contract Finder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="floatingGallery">
+        <span class="close-gallery">&times;</span> 
+
+        <img id="galleryImage" src="https://via.placeholder.com/400x300?text=Image+1" alt="Gallery Image">
+
+        <div class="gallery-controls">
+            <button id="prevButton">Previous</button>
+            <button id="nextButton">Next</button>
+        </div>
+    </div>
+
+    
+    <script>
+        document.getElementById('menuButton').addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+        });
+
+        window.onclick = function(event) {
+            const menu = document.getElementById('menu');
+            if (!event.target.matches('#menuButton') && !menu.contains(event.target)) {
+                menu.style.display = 'none';
+            }
+        }
+
+        
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+        darkModeToggle.textContent = 'Dark Mode OFF'; 
+        } else {
+        darkModeToggle.textContent = 'Dark Mode ON'; 
+        }
+        });
+
+
+        
+        const images = [
+            'house1.jpg',
+            'house2.jpg',
+            'house3.jpg',
+            'house4.jpg',
+            'house5.jpg',
+            'house6.jpg',
+            'house7.jpg',
+            'house8.jpg'
+        ];
+        let currentImageIndex = 0;
+
+        
+        const floatingGallery = document.getElementById('floatingGallery');
+        const galleryImage = document.getElementById('galleryImage');
+        const openGalleryButton = document.getElementById('openGalleryButton');
+        const closeGalleryButton = document.querySelector('.close-gallery');
+        const nextButton = document.getElementById('nextButton');
+        const prevButton = document.getElementById('prevButton');
+
+        
+        openGalleryButton.addEventListener('click', function() {
+            floatingGallery.style.right = '0'; 
+        });
+
+       
+        closeGalleryButton.addEventListener('click', function() {
+            floatingGallery.style.right = '-400px';
+        });
+
+        
+        nextButton.addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            updateGalleryImage();
+        });
+
+        
+        prevButton.addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            updateGalleryImage();
+        });
+
+        
+        function updateGalleryImage() {
+            galleryImage.src = images[currentImageIndex];
+        }
+
+        document.getElementById('comment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            
+            const commentText = document.getElementById('comment-text').value;
+            
+            
+            const commentElement = document.createElement('div');
+            commentElement.classList.add('comment');
+            commentElement.innerText = commentText;
+            
+            
+            document.getElementById('comments-list').appendChild(commentElement);
+            
+           
+            document.getElementById('comment-text').value = '';
+
+
+        });
+    </script>
+</body>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+.nav-links .active {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+.nav-links {
+justify-content: space-between; 
+flex-grow: 1;
+}
+.navbar,#menuButton {
+background-color: #333;
+color: white;
+padding: 1rem 0;
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: relative;
+}
+#menuButton {
+margin-left: auto; 
+background-color: #333;
+color: white; 
+border: none;
+padding: 0.5rem 1rem;
+cursor: pointer;
+font-family: Arial, sans-serif;
+font-size: 1rem;
+}
+
+#menu {
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    z-index: 1;
+    margin-top: 5px;
+    display: none;
+    right: 0; 
+}
+
+#menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#menu ul li {
+    padding: 8px 12px;
+    text-align: left;
+}
+
+#menu ul li a {
+text-decoration: none;
+color: black;
+}
+#menu ul li:hover {
+background-color: #f1f1f1;
+}
+
+
+.profile {
+    padding: 3rem 0;
+    background-color: #e0e0e0;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-info h2 {
+    margin-bottom: 0.5rem;
+}
+
+.profile-info p {
+    margin-bottom: 0.25rem;
+    color: #666;
+}
+
+.profile-about, .profile-projects, .profile-reviews, .profile-comments, .profile-contact {
+    margin-bottom: 2rem;
+}
+
+.project-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.project-card {
+    background-color: #fff;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.project-img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    object-fit: cover;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-card {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.review-card p {
+    margin-bottom: 0.5rem;
+    color: #666;
+}
+
+
+.profile-comments {
+    margin-bottom: 3rem;
+}
+
+.comment-form {
+    margin-bottom: 2rem;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+    resize: none;
+}
+
+.comments-list {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.comment {
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+    color: #666;
+}
+
+.comment:last-child {
+    border-bottom: none;
+}
+
+.btn {
+    background-color: #333;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 3rem;
+}
+
+#darkModeToggle{
+    color: black;
+}
+.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode .navbar {
+    background-color: #1e1e1e;
+}
+
+.dark-mode .nav-links a {
+    color: #e0e0e0;
+}
+
+.dark-mode .nav-links a:hover {
+    background-color: #444;
+}
+
+.dark-mode #menu {
+    background: #333;
+}
+
+.dark-mode .profile {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+.dark-mode .project-card {
+    background-color: #292929;
+}
+
+.dark-mode .review-card {
+    background-color: #292929;
+}
+
+.dark-mode .comment-form textarea {
+    background-color: #292929;
+    color: #e0e0e0;
+    border: 1px solid #444;
+}
+
+.dark-mode .btn {
+    background-color: #007bff;
+}
+
+.dark-mode .footer {
+    background-color: #1e1e1e;
+}
+
+
+
+#floatingGallery {
+    position: fixed;
+    right: -400px;
+    top: 0;
+    width: 400px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    transition: right 0.3s ease; 
+    padding: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#floatingGallery img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#floatingGallery .gallery-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#floatingGallery button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#floatingGallery button:hover {
+    background-color: #777;
+}
+
+
+#floatingGallery .close-gallery {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+#openGalleryButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#openGalleryButton:hover {
+    background-color: #0056b3;
+}
+</style>
+</html>

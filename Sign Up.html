@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <title>Web System</title>
+</head>
+<body>
+
+    <div class="logo">
+        <img src="ContractFinder.png" alt="Logo" class="logo">
+    </div>
+    
+    <form action="Websys log in.html" method="post" onsubmit="return showAlert()">
+        <div class="center">
+            <hr>
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" required placeholder="Enter Your Username:"><br><br>
+            
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" required placeholder="Enter Your Email:"><br><br>
+            
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" required placeholder="Create Your Password:"><br>
+            
+            <p>Sign up as:</p>
+            <input type="radio" id="contractor" name="role" required>
+            <label for="contractor">Contractor</label>
+            <input type="radio" id="project" name="role" required>
+            <label for="project">Project Owner</label><br><br>
+            
+            <button type="button" onclick="window.location.href='Websys log in.html'" id="back">Back</button>
+            <button type="submit" id="sign-up">Sign up</button>
+            <hr>
+        </div>
+    </form>
+
+    <script>
+        function showAlert() {
+            alert('Account was created successfully!');
+            return true;
+        }
+    </script>
+
+</body>
+</html>

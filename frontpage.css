@@ -1,0 +1,365 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.navbar, #menuButton {
+    background-color: #333;
+    color: white;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+.nav-links {
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+#menuButton {
+    margin-left: auto;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+}
+
+#menu {
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    z-index: 1;
+    margin-top: 5px;
+    display: none;
+}
+
+#menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#menu ul li {
+    padding: 8px 12px;
+}
+
+#menu ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+#menu ul li:hover {
+    background-color: #f1f1f1;
+}
+
+#darkModeToggle{
+    color: black;
+    cursor: pointer;
+}
+
+.hero {
+    background-color: #777;
+    color: white;
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.hero-heading {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-subheading {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    background-color: #333;
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+.dynamic-section {
+    background-color: white;
+}
+
+.features {
+    padding: 3rem 0;
+    background-color: #e0e0e0;
+}
+
+.features h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.feature-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    background-color: #fff;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: 300px;
+}
+
+.feature-card h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+    color: #666;
+}
+
+#dynamic-content {
+    color: black;
+    font-size: 16px;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+
+.btn-update {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-update:hover {
+    background-color: #0056b3;
+}
+
+#updateButton {
+    display: block;
+    margin: 20px auto;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 3rem;
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+.dark-mode .navbar {
+    background-color: #1e1e1e;
+}
+
+.dark-mode .footer {
+    background-color: #1e1e1e;
+}
+
+.dark-mode .btn {
+    background-color: #555;
+}
+
+.dark-mode .btn-update {
+    background-color: #0056b3;
+}
+
+.dark-mode .feature-card {
+    background-color: #333;
+    color: white;
+}
+
+.dark-mode .dynamic-section{
+    background-color: #1e1e1e;
+}
+
+.dark-mode #menu {
+    background-color: #1e1e1e;
+    color:white;
+}
+
+.dark-mode #menu ul li a{
+    color:white;
+}
+
+.dark-mode #darkModeToggle{
+    color: white;
+}
+
+.dark-mode #dynamic-content{
+    color:white;
+}
+
+.dark-mode .hero {
+    background-color: #1e1e1e;
+}
+
+.dark-mode .dynamic-section {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.dark-mode .features {
+    background-color: #2e2e2e;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+body.dark-mode .navbar {
+    background-color: #1e1e1e;
+}
+body.dark-mode .footer {
+    background-color: #1e1e1e;
+}
+
+#floatingGallery {
+    position: fixed;
+    right: -400px; 
+    top: 0;
+    width: 400px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    transition: right 0.3s ease; 
+    padding: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#floatingGallery img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#floatingGallery .gallery-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#floatingGallery button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#floatingGallery button:hover {
+    background-color: #777;
+}
+
+
+#floatingGallery .close-gallery {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+#openGalleryButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#openGalleryButton:hover {
+    background-color: #0056b3;
+}
+
+
+
+@media (max-width: 768px) {
+    .feature-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+}

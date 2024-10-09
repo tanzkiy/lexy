@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job - Contract Finder</title>
+    
+</head>
+<body>
+   
+    <header class="navbar">
+        <div class="container">
+            <div class="logo-container">
+                <img src="ContractFinder.png" alt="Contract Finder Logo" class="logo-img">
+                <h1 class="logo-text">Contract Finder</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="Homepage.html">Home</a></li>
+                    <li><a href="browse.html">Browse Designs</a></li>
+                    <li><a href="find_contractors.html">Find Contractors</a></li>
+                    <li><a href="post.html" class="active">Post a Project</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li>
+                        <button id="menuButton">Menu</button>
+                        <div id="menu">
+                            <ul>
+                                <li><a href="Homepage.html">Home</a></li>
+                                <li style="text-align: center;" id="darkModeToggle">Dark Mode ON</li>
+                                <li><button id="openGalleryButton">Image Gallery</button></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    
+    <section id="post-job-hero" class="hero">
+        <div class="container">
+            <h2 class="hero-heading">Post Your Project</h2>
+            <p class="hero-subheading">Share your project details and get connected with top contractors</p>
+        </div>
+    </section>
+
+    
+    <section id="post-job" class="post-job">
+        <div class="container">
+            <form class="job-form" onsubmit="return showAlert()">
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="project-title">Project Title:</label>
+                    <input type="text" id="project-title" name="project-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Project Description:</label>
+                    <textarea id="description" name="description" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="location">Project Location:</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+                <div class="form-group">
+                    <label for="budget">Estimated Budget:</label>
+                    <input type="text" id="budget" name="budget" required>
+                </div>
+                <div class="form-group">
+                    <label for="deadline">Project Deadline:</label>
+                    <input type="date" id="deadline" name="deadline" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn">Submit Your Project</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Contract Finder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="floatingGallery">
+        <span class="close-gallery">&times;</span> 
+
+        <img id="galleryImage" src="https://via.placeholder.com/400x300?text=Image+1" alt="Gallery Image">
+
+        <div class="gallery-controls">
+            <button id="prevButton">Previous</button>
+            <button id="nextButton">Next</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('menuButton').addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+        });
+
+        window.onclick = function(event) {
+            const menu = document.getElementById('menu');
+            if (!event.target.matches('#menuButton') && !menu.contains(event.target)) {
+                menu.style.display = 'none';
+            }
+        }
+
+        function showAlert() {
+            alert('The Project was posted successfully!');
+            return true;
+        }
+
+       
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+        darkModeToggle.textContent = 'Dark Mode OFF'; 
+        } else {
+        darkModeToggle.textContent = 'Dark Mode ON'; 
+        }
+        });
+
+        const images = [
+            'house1.jpg',
+            'house2.jpg',
+            'house3.jpg',
+            'house4.jpg',
+            'house5.jpg',
+            'house6.jpg',
+            'house7.jpg',
+            'house8.jpg'
+        ];
+        let currentImageIndex = 0;
+
+        
+        const floatingGallery = document.getElementById('floatingGallery');
+        const galleryImage = document.getElementById('galleryImage');
+        const openGalleryButton = document.getElementById('openGalleryButton');
+        const closeGalleryButton = document.querySelector('.close-gallery');
+        const nextButton = document.getElementById('nextButton');
+        const prevButton = document.getElementById('prevButton');
+
+        
+        openGalleryButton.addEventListener('click', function() {
+            floatingGallery.style.right = '0'; 
+        });
+
+        
+        closeGalleryButton.addEventListener('click', function() {
+            floatingGallery.style.right = '-400px';
+        });
+
+        
+        nextButton.addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            updateGalleryImage();
+        });
+
+       
+        prevButton.addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            updateGalleryImage();
+        });
+
+        
+        function updateGalleryImage() {
+            galleryImage.src = images[currentImageIndex];
+        }
+    </script>
+</body>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+justify-content: space-between; 
+flex-grow: 1; 
+}
+.navbar,#menuButton {
+background-color: #333;
+color: white;
+padding: 1rem 0;
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: relative;
+}
+#menuButton {
+margin-left: auto; 
+background-color: #333;
+color: white; 
+border: none;
+padding: 0.5rem 1rem;
+cursor: pointer;
+font-family: Arial, sans-serif;
+font-size: 1rem;
+}
+
+#menu {
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    z-index: 1;
+    margin-top: 5px;
+    display: none;
+    right: 0; 
+}
+
+#menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#menu ul li {
+    padding: 8px 12px;
+    text-align: left;
+}
+
+#menu ul li a {
+text-decoration: none;
+color: black;
+}
+#menu ul li:hover {
+background-color: #f1f1f1;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+
+.hero {
+    background-color: #777;
+    color: white;
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.hero-heading {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-subheading {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+
+.post-job {
+    padding: 3rem 0;
+    background-color: #e0e0e0;
+}
+
+.job-form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.form-group button {
+    background-color: #333;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-group button:hover {
+    background-color: #555;
+}
+
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 3rem;
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+#darkModeToggle{
+    color:black;
+    cursor: pointer;
+}
+
+.dark-mode .navbar {
+    background-color: #1e1e1e;
+}
+
+.dark-mode .footer {
+    background-color: #1e1e1e;
+}
+
+.dark-mode .btn {
+    background-color: #555;
+}
+
+.dark-mode .post-job{
+    background-color: black;
+    color:white;
+}
+.dark-mode .job-form{
+    background-color: #1e1e1e;
+}
+
+.dark-mode .btn-update {
+    background-color: #0056b3;
+}
+
+.dark-mode .feature-card {
+    background-color: #333;
+    color: white;
+}
+
+.dark-mode #menu {
+    background-color: #1e1e1e;
+    color:white;
+}
+
+.dark-mode #menu ul li a{
+    color:white;
+}
+
+.dark-mode #darkModeToggle{
+    color: white;
+}
+
+.dark-mode #dynamic-content{
+    color:white;
+}
+
+.dark-mode .hero {
+    background-color: #1e1e1e;
+}
+
+.dark-mode .dynamic-section {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.dark-mode .features {
+    background-color: #2e2e2e;
+}
+
+
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+body.dark-mode .navbar {
+    background-color: #1e1e1e;
+}
+body.dark-mode .footer {
+    background-color: #1e1e1e;
+}
+
+
+
+#floatingGallery {
+    position: fixed;
+    right: -400px;
+    top: 0;
+    width: 400px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    transition: right 0.3s ease; 
+    padding: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#floatingGallery img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#floatingGallery .gallery-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#floatingGallery button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#floatingGallery button:hover {
+    background-color: #777;
+}
+
+
+#floatingGallery .close-gallery {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+#openGalleryButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#openGalleryButton:hover {
+    background-color: #0056b3;
+}
+
+
+@media (max-width: 768px) {
+    .hero-heading {
+        font-size: 2rem;
+    }
+    .hero-subheading {
+        font-size: 1rem;
+    }
+    .btn {
+        padding: 0.75rem 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .job-form {
+        padding: 1rem;
+    }
+}
+</style>
+</html>

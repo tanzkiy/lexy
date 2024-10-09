@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract Finder</title>
+    <link rel="stylesheet" href="frontpage.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo-container">
+                <img src="ContractFinder.png" alt="Contract Finder Logo" class="logo-img">
+                <h1 class="logo-text">Contract Finder</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="browse.html">Browse Designs</a></li>
+                    <li><a href="find_contractors.html">Find Contractors</a></li>
+                    <li><a href="post.html">Post a Project</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li>
+                        <button id="menuButton">Menu</button>
+                        <div id="menu">
+                            <ul>
+                                <li><a href="#home">Home</a></li>
+                                <li style="text-align: center;" id="darkModeToggle">Dark Mode ON</li>
+                                <li><button id="openGalleryButton">Image Gallery</button></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h2 class="hero-heading">Find Trusted Contractors for Your Next Project</h2>
+            <p class="hero-subheading">Connecting clients with top-rated professionals</p>
+            <a href="#GetStarted" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>What do you need?</h2>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <h3><a href="find_contractors.html">Find Contractors</a></h3>
+                    <p>Easily search for trusted contractors by location and expertise.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 id="GetStarted"><a href="post.html">Post a Job</a></h3>
+                    <p>Describe your project and receive quality service from top professionals.</p>
+                </div>
+                <div class="feature-card">
+                    <h3><a href="browse.html">Browse Designs</a></h3>
+                    <p>View contractor ratings, products, and portfolios to find the perfect match for your project.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dynamic-section" class="dynamic-section">
+        <div class="container">
+            <h2 style="text-align:center;">Interactive Section</h2>
+            <p style="text-align: center;" id="dynamic-content">Click the button below to see the content update!</p>
+            <button class="btn-update" id="updateButton">Update Content</button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Contract Finder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    
+    <div id="floatingGallery">
+        <span class="close-gallery">&times;</span>
+
+        <img id="galleryImage" src="https://via.placeholder.com/400x300?text=Image+1" alt="Gallery Image">
+
+        <div class="gallery-controls">
+            <button id="prevButton">Previous</button>
+            <button id="nextButton">Next</button>
+        </div>
+    </div>
+
+    <script>
+        
+        document.getElementById('updateButton').addEventListener('click', function() {
+            const content = document.getElementById('dynamic-content');
+            content.innerHTML = 'Thank you for using Contract Finder! We are here to help you find the best professionals.';
+            content.style.color = 'green';  
+            content.style.fontSize = '18px'; 
+            content.style.fontWeight = 'bold';  
+        });
+
+       
+        document.getElementById('menuButton').addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+        });
+
+        window.onclick = function(event) {
+            const menu = document.getElementById('menu');
+            if (!event.target.matches('#menuButton') && !menu.contains(event.target)) {
+                menu.style.display = 'none';
+            }
+        }
+
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+        darkModeToggle.textContent = 'Dark Mode OFF'; 
+        } else {
+        darkModeToggle.textContent = 'Dark Mode ON'; 
+        }
+        });
+
+
+        const images = [
+            'house1.jpg',
+            'house2.jpg',
+            'house3.jpg',
+            'house4.jpg',
+            'house5.jpg',
+            'house6.jpg',
+            'house7.jpg',
+            'house8.jpg'
+        ];
+        let currentImageIndex = 0;
+
+       
+        const floatingGallery = document.getElementById('floatingGallery');
+        const galleryImage = document.getElementById('galleryImage');
+        const openGalleryButton = document.getElementById('openGalleryButton');
+        const closeGalleryButton = document.querySelector('.close-gallery');
+        const nextButton = document.getElementById('nextButton');
+        const prevButton = document.getElementById('prevButton');
+
+        
+        openGalleryButton.addEventListener('click', function() {
+            floatingGallery.style.right = '0'; 
+        });
+
+        
+        closeGalleryButton.addEventListener('click', function() {
+            floatingGallery.style.right = '-400px'; 
+        });
+
+
+        nextButton.addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            updateGalleryImage();
+        });
+
+        
+        prevButton.addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            updateGalleryImage();
+        });
+
+       
+        function updateGalleryImage() {
+            galleryImage.src = images[currentImageIndex];
+        }
+    </script>
+</body>
+</html>
